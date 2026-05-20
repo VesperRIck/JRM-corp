@@ -1,65 +1,106 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 
-export default function Home() {
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+
+/* Hoja de ruta de construcción por fases (placeholder de la Fase 1) */
+const roadmap = [
+  { phase: "Fase 1", label: "Cimientos del proyecto", done: true },
+  { phase: "Fase 2", label: "Landing page completa", done: false },
+  { phase: "Fase 3", label: "Backend y autenticación", done: false },
+  { phase: "Fase 4", label: "Panel de cliente", done: false },
+  { phase: "Fase 5", label: "Sistema de citas", done: false },
+  { phase: "Fase 6", label: "Pagos con Stripe", done: false },
+  { phase: "Fase 7", label: "Panel administrador", done: false },
+  { phase: "Fase 8", label: "Despliegue en Vercel", done: false },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-6 py-20">
+      {/* Fondo: rejilla tecnológica */}
+      <div className="bg-grid absolute inset-0 -z-20" aria-hidden />
+      {/* Desvanecimiento del fondo hacia abajo */}
+      <div
+        className="absolute inset-0 -z-20 bg-gradient-to-b from-background/30 via-background/70 to-background"
+        aria-hidden
+      />
+      {/* Orbes difusos azul pastel */}
+      <div
+        className="blur-orb absolute -left-24 top-4 -z-10 size-72 rounded-full bg-brand"
+        aria-hidden
+      />
+      <div
+        className="blur-orb absolute -right-20 bottom-4 -z-10 size-80 rounded-full bg-brand-light"
+        aria-hidden
+      />
+
+      <div className="flex w-full max-w-3xl flex-col items-center text-center">
+        {/* Distintivo de estado */}
+        <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-brand-deep">
+          <Sparkles className="size-3.5" />
+          Fase 1 · Cimientos del proyecto completados
+        </span>
+
+        {/* Marca */}
+        <h1 className="mt-6 font-display text-6xl font-bold tracking-tight sm:text-7xl">
+          <span className="text-gradient">JRM Corp</span>
+        </h1>
+
+        {/* Eslogan */}
+        <p className="mt-5 max-w-xl text-lg text-muted-foreground">
+          {siteConfig.slogan}
+        </p>
+
+        {/* Llamados a la acción */}
+        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <Button asChild variant="gradient" size="lg">
+            <Link href="/#servicios">
+              Nuestros Servicios
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+          <Button asChild variant="glass" size="lg">
+            <Link href="/#contacto">
+              <MessageCircle className="size-4" />
+              Contáctanos
+            </Link>
+          </Button>
+        </div>
+
+        {/* Hoja de ruta */}
+        <div className="glass mt-14 w-full rounded-2xl p-6 text-left">
+          <p className="text-sm font-semibold text-foreground">
+            Hoja de ruta de construcción
           </p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Plataforma corporativa premium · Next.js 16 + Supabase
+          </p>
+          <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+            {roadmap.map((item) => (
+              <li key={item.phase} className="flex items-center gap-2.5 text-sm">
+                <span
+                  className={cn(
+                    "flex size-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold",
+                    item.done
+                      ? "bg-primary text-primary-foreground"
+                      : "border border-border text-muted-foreground",
+                  )}
+                >
+                  {item.done ? "✓" : ""}
+                </span>
+                <span
+                  className={item.done ? "text-foreground" : "text-muted-foreground"}
+                >
+                  <span className="font-medium">{item.phase}:</span> {item.label}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
