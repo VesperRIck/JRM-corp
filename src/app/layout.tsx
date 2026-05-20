@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Toaster } from "sonner";
+
+import { Footer } from "@/components/layout/footer";
+import { LoadingScreen } from "@/components/layout/loading-screen";
+import { Navbar } from "@/components/layout/navbar";
+import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -73,7 +79,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        {children}
+        <LoadingScreen />
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <WhatsAppFloat />
+        <Toaster position="bottom-center" richColors />
       </body>
     </html>
   );
