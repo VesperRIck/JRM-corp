@@ -149,7 +149,7 @@ export function PanelShell({
   return (
     <div className="min-h-screen bg-secondary/30">
       {/* Sidebar de escritorio */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 bg-brand-ink lg:block">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 bg-brand-ink lg:block print:hidden">
         <SidebarContent
           pathname={pathname}
           name={name}
@@ -191,9 +191,9 @@ export function PanelShell({
       </AnimatePresence>
 
       {/* Área de contenido */}
-      <div className="lg:pl-64">
+      <div className="lg:pl-64 print:pl-0!">
         {/* Barra superior */}
-        <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-border bg-background/80 px-5 backdrop-blur-md sm:px-8">
+        <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-border bg-background/80 px-5 backdrop-blur-md sm:px-8 print:hidden">
           <button
             type="button"
             onClick={() => setOpen(true)}

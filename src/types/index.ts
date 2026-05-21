@@ -40,6 +40,22 @@ export interface Appointment {
   updated_at: string;
 }
 
+/* ---------- Pagos ---------- */
+export type PaymentStatus = "paid" | "pending" | "failed" | "refunded";
+
+export interface Payment {
+  id: string;
+  user_id: string;
+  stripe_session_id: string;
+  service_slug: string | null;
+  service_title: string;
+  /** Monto en centavos */
+  amount: number;
+  currency: string;
+  status: PaymentStatus;
+  created_at: string;
+}
+
 /* ---------- Navegación ---------- */
 export interface NavLink {
   label: string;
@@ -65,6 +81,8 @@ export interface Service {
   features: string[];
   /** Color de acento en HEX para gradientes y estados hover */
   accent: string;
+  /** Precio del servicio en dólares (USD) */
+  price: number;
 }
 
 /* ---------- Equipo / Fundadores ---------- */

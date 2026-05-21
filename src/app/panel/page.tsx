@@ -5,6 +5,7 @@ import { StatCard } from "@/components/panel/stat-card";
 import { services } from "@/config/services";
 import { getCurrentProfile } from "@/lib/auth/dal";
 import { getMyAppointments } from "@/lib/services/appointments";
+import { getMyPayments } from "@/lib/services/payments";
 
 /* =====================================================================
    Panel de Cliente · Inicio (dashboard)
@@ -37,6 +38,7 @@ export default async function PanelHomePage() {
   const activeAppointments = appointments.filter(
     (a) => a.status !== "cancelled",
   ).length;
+  const payments = await getMyPayments();
   const firstName = (profile?.full_name || "Cliente").split(" ")[0];
 
   return (
@@ -61,7 +63,7 @@ export default async function PanelHomePage() {
         <StatCard
           icon={<CreditCard className="size-6" />}
           label="Pagos realizados"
-          value={0}
+          value={payments.length}
         />
         <StatCard
           icon={<Briefcase className="size-6" />}

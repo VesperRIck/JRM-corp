@@ -16,6 +16,7 @@ export const services: Service[] = [
       "Creamos experiencias digitales a medida: landing pages, sitios corporativos y tiendas en línea con diseño premium, optimización SEO y máxima velocidad. Cada proyecto se construye pensando en tu identidad de marca y en convertir visitas en clientes.",
     icon: "globe",
     accent: "#3f6fc2",
+    price: 499,
     benefits: [
       "Diseño 100% responsive (móvil, tablet y escritorio)",
       "Optimización SEO y carga ultrarrápida",
@@ -39,6 +40,7 @@ export const services: Service[] = [
       "Impulsamos tu marca con estrategias de marketing basadas en datos: publicidad en redes sociales y Google, gestión profesional de comunidades, creación de contenido y embudos de venta. Medimos cada resultado para maximizar tu retorno de inversión.",
     icon: "megaphone",
     accent: "#6a5cc8",
+    price: 299,
     benefits: [
       "Mayor alcance y reconocimiento de marca",
       "Campañas optimizadas por retorno de inversión",
@@ -62,6 +64,7 @@ export const services: Service[] = [
       "Nuestro estudio acompaña a artistas y marcas en todo el proceso creativo: composición, grabación, mezcla, masterización y producción de videos musicales. Equipo profesional y un equipo creativo para que tu proyecto suene como lo imaginaste.",
     icon: "music",
     accent: "#c8568f",
+    price: 399,
     benefits: [
       "Estudio con equipo profesional",
       "Acompañamiento creativo integral",
@@ -85,6 +88,7 @@ export const services: Service[] = [
       "Asesoramos a emprendedores y empresas en planificación estratégica, optimización de procesos, finanzas y transformación digital. Te ayudamos a tomar decisiones informadas y a escalar tu negocio con bases sólidas.",
     icon: "briefcase",
     accent: "#2c9e7e",
+    price: 249,
     benefits: [
       "Diagnóstico empresarial completo",
       "Planes de crecimiento accionables",
