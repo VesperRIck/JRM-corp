@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 
 import { StatCard } from "@/components/panel/stat-card";
-import { services } from "@/config/services";
 import { getCurrentProfile } from "@/lib/auth/dal";
+import { getActiveServices } from "@/lib/services/services-data";
 import { getMyAppointments } from "@/lib/services/appointments";
 import { getMyPayments } from "@/lib/services/payments";
 
@@ -46,6 +46,7 @@ export default async function PanelHomePage() {
     (a) => a.status !== "cancelled",
   ).length;
   const payments = await getMyPayments();
+  const services = await getActiveServices();
   const firstName = (profile?.full_name || "Cliente").split(" ")[0];
 
   return (

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import {
+  Briefcase,
   CalendarCheck,
   CreditCard,
   LayoutDashboard,
@@ -26,6 +27,7 @@ import type { Profile } from "@/types";
 
 const nav = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+  { label: "Servicios", href: "/admin/servicios", icon: Briefcase },
   { label: "Usuarios", href: "/admin/usuarios", icon: Users },
   { label: "Citas", href: "/admin/citas", icon: CalendarCheck },
   { label: "Pagos", href: "/admin/pagos", icon: CreditCard },

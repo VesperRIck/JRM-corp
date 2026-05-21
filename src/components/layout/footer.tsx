@@ -5,16 +5,17 @@ import { Logo } from "@/components/shared/logo";
 import { SocialIcon } from "@/components/shared/social-icon";
 import { branches } from "@/config/branches";
 import { footerNav } from "@/config/navigation";
-import { services } from "@/config/services";
 import { siteConfig } from "@/config/site";
 import { socialLinks } from "@/config/social";
+import { getActiveServices } from "@/lib/services/services-data";
 
 /* =====================================================================
    Footer · Pie de página corporativo (fondo oscuro).
    ===================================================================== */
 
-export function Footer() {
+export async function Footer() {
   const year = new Date().getFullYear();
+  const services = await getActiveServices();
 
   return (
     <footer className="bg-brand-ink text-white/65">

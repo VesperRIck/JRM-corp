@@ -6,15 +6,15 @@ import { CreditCard, ShieldCheck } from "lucide-react";
 
 import { ServiceIcon } from "@/components/shared/service-icon";
 import { Button } from "@/components/ui/button";
-import { services } from "@/config/services";
 import { createCheckoutSession } from "@/lib/actions/payments";
 import { formatPrice } from "@/lib/format";
+import type { Service } from "@/types";
 
 /* =====================================================================
    PaymentCheckout · Selección de servicio y pago con Stripe Checkout.
    ===================================================================== */
 
-export function PaymentCheckout() {
+export function PaymentCheckout({ services }: { services: Service[] }) {
   const [loadingSlug, setLoadingSlug] = useState<string | null>(null);
 
   async function handlePay(slug: string) {

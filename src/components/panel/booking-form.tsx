@@ -11,11 +11,11 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ServiceIcon } from "@/components/shared/service-icon";
-import { services } from "@/config/services";
 import { timeSlots } from "@/config/booking";
 import { createClient } from "@/lib/supabase/client";
 import { formatLongDate, toISODate } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import type { Service } from "@/types";
 
 /* =====================================================================
    BookingForm · Flujo de reserva de citas.
@@ -27,7 +27,13 @@ interface BookingSuccess {
   time: string;
 }
 
-export function BookingForm({ defaultService }: { defaultService?: string }) {
+export function BookingForm({
+  defaultService,
+  services,
+}: {
+  defaultService?: string;
+  services: Service[];
+}) {
   const router = useRouter();
 
   const [serviceSlug, setServiceSlug] = useState(

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 import { BookingForm } from "@/components/panel/booking-form";
+import { getActiveServices } from "@/lib/services/services-data";
 
 export const metadata: Metadata = { title: "Agendar cita" };
 
@@ -12,6 +13,7 @@ export default async function AgendarCitaPage({
   searchParams: Promise<{ servicio?: string }>;
 }) {
   const { servicio } = await searchParams;
+  const services = await getActiveServices();
 
   return (
     <div className="space-y-8">
@@ -31,7 +33,7 @@ export default async function AgendarCitaPage({
         </p>
       </div>
 
-      <BookingForm defaultService={servicio} />
+      <BookingForm services={services} defaultService={servicio} />
     </div>
   );
 }

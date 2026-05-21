@@ -4,11 +4,13 @@ import { CalendarCheck } from "lucide-react";
 
 import { ServiceIcon } from "@/components/shared/service-icon";
 import { Button } from "@/components/ui/button";
-import { services } from "@/config/services";
+import { getActiveServices } from "@/lib/services/services-data";
 
 export const metadata: Metadata = { title: "Servicios" };
 
-export default function PanelServiciosPage() {
+export default async function PanelServiciosPage() {
+  const services = await getActiveServices();
+
   return (
     <div className="space-y-8">
       <div>

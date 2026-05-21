@@ -5,14 +5,16 @@ import { Reveal } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ServiceIcon } from "@/components/shared/service-icon";
 import { Objects3D } from "@/components/three/objects-3d";
-import { services } from "@/config/services";
+import { getActiveServices } from "@/lib/services/services-data";
 
 /* =====================================================================
    Sección "Servicios" · Tarjetas con iconos 3D animados.
    Cada tarjeta enlaza a la página individual del servicio.
    ===================================================================== */
 
-export function Services() {
+export async function Services() {
+  const services = await getActiveServices();
+
   return (
     <section
       id="servicios"

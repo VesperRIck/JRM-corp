@@ -63,26 +63,27 @@ export interface NavLink {
 }
 
 /* ---------- Servicios ---------- */
-export type ServiceSlug =
-  | "diseno-web"
-  | "marketing-digital"
-  | "productora-musical"
-  | "asesoramiento-empresarial";
-
 export interface Service {
-  slug: ServiceSlug;
+  id: string;
+  slug: string;
   title: string;
   tagline: string;
   shortDescription: string;
   description: string;
   /** Clave de icono; se resuelve a un icono concreto en el componente */
   icon: string;
-  benefits: string[];
-  features: string[];
-  /** Color de acento en HEX para gradientes y estados hover */
+  /** Color de acento en HEX */
   accent: string;
   /** Precio del servicio en dólares (USD) */
   price: number;
+  benefits: string[];
+  features: string[];
+  /** URL de la imagen (Supabase Storage) o null */
+  image: string | null;
+  /** URL de video o null */
+  video: string | null;
+  /** Si está activo (visible en la web) o suspendido */
+  isActive: boolean;
 }
 
 /* ---------- Equipo / Fundadores ---------- */

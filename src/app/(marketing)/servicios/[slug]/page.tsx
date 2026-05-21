@@ -10,7 +10,7 @@ import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Service3D } from "@/components/three/service-3d";
-import { getServiceBySlug, serviceSlugs } from "@/config/services";
+import { getServiceBySlug } from "@/lib/services/services-data";
 
 /* =====================================================================
    Página individual de servicio · /servicios/[slug]
@@ -20,16 +20,11 @@ type ServicePageProps = {
   params: Promise<{ slug: string }>;
 };
 
-/** Genera estáticamente una página por cada servicio */
-export function generateStaticParams() {
-  return serviceSlugs.map((slug) => ({ slug }));
-}
-
 export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) return { title: "Servicio no encontrado" };
   return {
     title: service.title,
@@ -39,7 +34,7 @@ export async function generateMetadata({
 
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlug(slug);
   if (!service) notFound();
 
   return (
@@ -143,11 +138,30 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <h2 className="text-center font-display text-2xl font-bold text-foreground">
               Conoce más sobre este servicio
             </h2>
-            <ImagePlaceholder
-              label="Video del servicio"
-              icon={<CirclePlay className="size-6" />}
-              className="mt-6 aspect-video w-full"
-            />
+            {service.image ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={service.image}
+                alt={service.title}
+                className="mt-6 aspect-video w-full rounded-2xl border border-border object-cover"
+              />
+            ) : (
+              <ImagePlaceholder
+                label="Imagen del servicio"
+                icon={<CirclePlay className="size-6" />}
+                className="mt-6 aspect-video w-full"
+              />
+            )}
+            {service.video && (
+              <div className="mt-4 aspect-video w-full overflow-hidden rounded-2xl border border-border">
+                <iframe
+                  src={service.video}
+                  title={`Video de ${service.title}`}
+                  className="size-full"
+                  allowFullScreen
+                />
+              </div>
+            )}
           </Reveal>
         </div>
       </section>

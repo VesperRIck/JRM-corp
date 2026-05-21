@@ -2,8 +2,8 @@
 
 import { headers } from "next/headers";
 
-import { getServiceBySlug } from "@/config/services";
 import { getCurrentUser } from "@/lib/auth/dal";
+import { getServiceBySlug } from "@/lib/services/services-data";
 import { getStripe } from "@/lib/stripe/client";
 
 /* =====================================================================
@@ -16,7 +16,7 @@ export async function createCheckoutSession(
   const user = await getCurrentUser();
   if (!user) return { error: "Debes iniciar sesión para pagar." };
 
-  const service = getServiceBySlug(serviceSlug);
+  const service = await getServiceBySlug(serviceSlug);
   if (!service) return { error: "El servicio seleccionado no es válido." };
 
   let stripe;
