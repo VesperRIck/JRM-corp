@@ -5,6 +5,19 @@
 /* ---------- Roles y usuarios ---------- */
 export type UserRole = "client" | "admin";
 
+/** Perfil de usuario almacenado en la tabla `profiles` de Supabase */
+export interface Profile {
+  id: string;
+  full_name: string;
+  email: string | null;
+  phone: string | null;
+  cedula: string | null;
+  role: UserRole;
+  is_blocked: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
 /* ---------- Navegación ---------- */
 export interface NavLink {
   label: string;
