@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, Briefcase, CalendarCheck, CreditCard, User } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  CalendarCheck,
+  CreditCard,
+  ShieldCheck,
+  User,
+} from "lucide-react";
 
 import { StatCard } from "@/components/panel/stat-card";
 import { services } from "@/config/services";
@@ -52,6 +59,27 @@ export default async function PanelHomePage() {
           Bienvenido a tu panel de JRM Corp.
         </p>
       </div>
+
+      {/* Acceso al panel de administración (solo administradores) */}
+      {profile?.role === "admin" && (
+        <Link
+          href="/admin"
+          className="group flex items-center gap-3 rounded-2xl border border-brand/30 bg-brand/5 p-4 transition-colors hover:bg-brand/10"
+        >
+          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-deep to-brand text-white">
+            <ShieldCheck className="size-5" />
+          </span>
+          <span className="flex-1">
+            <span className="block font-semibold text-foreground">
+              Tienes acceso de administrador
+            </span>
+            <span className="block text-sm text-muted-foreground">
+              Entra al panel de administración de JRM Corp.
+            </span>
+          </span>
+          <ArrowRight className="size-5 shrink-0 text-brand-deep transition-transform group-hover:translate-x-1" />
+        </Link>
+      )}
 
       {/* Indicadores */}
       <div className="grid gap-4 sm:grid-cols-3">
