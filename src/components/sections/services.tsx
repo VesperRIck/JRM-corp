@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ServiceIcon } from "@/components/shared/service-icon";
+import { Objects3D } from "@/components/three/objects-3d";
 import { services } from "@/config/services";
 
 /* =====================================================================
@@ -13,8 +14,12 @@ import { services } from "@/config/services";
 
 export function Services() {
   return (
-    <section id="servicios" className="scroll-mt-20 bg-secondary/40 py-24">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section
+      id="servicios"
+      className="relative scroll-mt-20 overflow-hidden bg-secondary/40 py-24"
+    >
+      <Objects3D />
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Servicios"
           title="Lo que hacemos por ti"

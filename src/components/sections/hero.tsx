@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Hero3D } from "@/components/three/hero-3d";
 import { siteConfig } from "@/config/site";
 import { useGreeting } from "@/hooks/use-greeting";
 
@@ -79,7 +80,10 @@ export function Hero() {
         />
       ))}
 
-      {/* Transición suave hacia el fondo claro */}
+      {/* Cristal 3D (three.js) */}
+      <Hero3D />
+
+      {/* Transición suave hacia la siguiente sección */}
       <div
         className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-background to-transparent"
         aria-hidden

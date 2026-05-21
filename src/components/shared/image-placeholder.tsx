@@ -24,7 +24,7 @@ export function ImagePlaceholder({
   return (
     <div
       className={cn(
-        "relative flex flex-col items-center justify-center gap-2.5 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-secondary to-brand-light/50 text-brand-deep",
+        "relative flex flex-col items-center justify-center gap-2.5 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-secondary to-accent text-brand",
         className,
       )}
     >

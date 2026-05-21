@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 
 /* =====================================================================
@@ -59,19 +60,26 @@ export function LoadingScreen() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <motion.span
-              className="absolute -inset-3 rounded-3xl border border-brand/40"
+              className="absolute -inset-3 rounded-full border border-brand/40"
               animate={{ rotate: 360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               aria-hidden
             />
             <motion.span
-              className="absolute -inset-6 rounded-[2rem] border border-brand/15"
+              className="absolute -inset-6 rounded-full border border-brand/15"
               animate={{ rotate: -360 }}
               transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
               aria-hidden
             />
-            <span className="grid size-24 place-items-center rounded-3xl bg-gradient-to-br from-brand-deep to-brand text-2xl font-bold tracking-tight text-white shadow-2xl shadow-brand/40">
-              JRM
+            <span className="grid size-28 place-items-center">
+              <Image
+                src="/jrm-logo.png"
+                alt="JRM Corp"
+                width={112}
+                height={112}
+                priority
+                className="size-full object-contain invert"
+              />
             </span>
           </motion.div>
 

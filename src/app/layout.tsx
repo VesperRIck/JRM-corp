@@ -78,7 +78,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <LoadingScreen />
         {children}
-        <Toaster position="bottom-center" richColors />
+        <Toaster position="bottom-center" theme="dark" richColors />
       </body>
     </html>
   );

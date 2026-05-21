@@ -1,77 +1,47 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Activa la variante `dark:` mediante la clase .dark en un ancestro */
 @custom-variant dark (&:is(.dark *));
 
 /* =====================================================================
-   JRM Corp · Sistema de diseño
-   Paleta:  Blanco · Negro · Azul pastel
-   Estilo:  Corporativo futurista premium + Glassmorphism
+   JRM Corp · Sistema de diseño — MODO OSCURO PREMIUM
+   Estilo: oscuro elegante y tecnológico (referencia: PlayStation / Spotify)
+   Paleta: Negro profundo · Texto claro · Azul pastel luminoso
    ===================================================================== */
 
 :root {
-  --radius: 0.85rem;
+  --radius: 0.9rem;
 
   /* Superficies */
-  --background: #ffffff;
-  --foreground: #0b0b12;
-  --card: #ffffff;
-  --card-foreground: #0b0b12;
-  --popover: #ffffff;
-  --popover-foreground: #0b0b12;
+  --background: #08090f;
+  --foreground: #eef1f8;
+  --card: #0f111b;
+  --card-foreground: #eef1f8;
+  --popover: #0f111b;
+  --popover-foreground: #eef1f8;
 
-  /* Marca — Azul pastel */
-  --primary: #3f6fc2;            /* Azul medio: botones y acentos fuertes */
-  --primary-foreground: #ffffff;
-  --secondary: #eef3fb;          /* Azul pastel muy claro */
-  --secondary-foreground: #1a2b4a;
-  --muted: #f3f5f9;
-  --muted-foreground: #5b6577;
-  --accent: #afcdf3;             /* Azul pastel de acento */
-  --accent-foreground: #11233f;
-  --destructive: #e5484d;
+  /* Marca — azul pastel luminoso */
+  --primary: #8fb4e3;
+  --primary-foreground: #07080d;
+  --secondary: #171b29;
+  --secondary-foreground: #dfe6f2;
+  --muted: #141826;
+  --muted-foreground: #98a2b8;
+  --accent: #1f2942;
+  --accent-foreground: #cfe0f6;
+  --destructive: #ff5d62;
   --destructive-foreground: #ffffff;
 
   /* Bordes / inputs / foco */
-  --border: #e4e8f0;
-  --input: #e4e8f0;
+  --border: #1f2434;
+  --input: #272d40;
   --ring: #8fb4e3;
 
-  /* Tokens propios de marca */
-  --brand: #8fb4e3;              /* Azul pastel principal */
-  --brand-light: #cfe0f6;
-  --brand-deep: #2c4f8f;
-  --brand-ink: #0b0b12;          /* Negro corporativo */
-}
-
-.dark {
-  --background: #07080d;
-  --foreground: #eef1f7;
-  --card: #0e1019;
-  --card-foreground: #eef1f7;
-  --popover: #0e1019;
-  --popover-foreground: #eef1f7;
-
-  --primary: #8fb4e3;
-  --primary-foreground: #07080d;
-  --secondary: #161a26;
-  --secondary-foreground: #dfe6f2;
-  --muted: #141826;
-  --muted-foreground: #9aa4ba;
-  --accent: #1d2740;
-  --accent-foreground: #cfe0f6;
-  --destructive: #ff5a5f;
-  --destructive-foreground: #ffffff;
-
-  --border: rgba(255, 255, 255, 0.10);
-  --input: rgba(255, 255, 255, 0.14);
-  --ring: #8fb4e3;
-
+  /* Tokens de marca */
   --brand: #8fb4e3;
-  --brand-light: #cfe0f6;
-  --brand-deep: #2c4f8f;
-  --brand-ink: #07080d;
+  --brand-light: #c3d8f5;
+  --brand-deep: #6f9ad8;
+  --brand-ink: #050608;
 }
 
 /* Mapea las variables a tokens de Tailwind v4 (genera bg-*, text-*, etc.) */
@@ -126,19 +96,18 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background-color: color-mix(in oklab, var(--brand) 35%, transparent);
-    color: var(--brand-deep);
+    background-color: color-mix(in oklab, var(--brand) 40%, transparent);
+    color: #ffffff;
   }
-  /* Scrollbar con estética de marca */
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--background);
   }
   ::-webkit-scrollbar-thumb {
-    background: color-mix(in oklab, var(--brand) 55%, transparent);
+    background: #2a3147;
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -150,23 +119,22 @@
    Utilidades de marca reutilizables
    ===================================================================== */
 @layer utilities {
-  /* Glassmorphism sobre fondos claros */
+  /* Glassmorphism oscuro */
   .glass {
-    background-color: color-mix(in oklab, #ffffff 68%, transparent);
-    backdrop-filter: blur(18px) saturate(170%);
-    -webkit-backdrop-filter: blur(18px) saturate(170%);
-    border: 1px solid color-mix(in oklab, #ffffff 65%, transparent);
+    background-color: color-mix(in oklab, #11131d 78%, transparent);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border: 1px solid color-mix(in oklab, #ffffff 9%, transparent);
   }
-  /* Glassmorphism sobre fondos oscuros */
   .glass-dark {
-    background-color: color-mix(in oklab, #0b0b12 55%, transparent);
-    backdrop-filter: blur(18px) saturate(170%);
-    -webkit-backdrop-filter: blur(18px) saturate(170%);
-    border: 1px solid color-mix(in oklab, #ffffff 12%, transparent);
+    background-color: color-mix(in oklab, #0a0b12 80%, transparent);
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border: 1px solid color-mix(in oklab, #ffffff 8%, transparent);
   }
-  /* Texto con degradado azul pastel */
+  /* Texto con degradado luminoso */
   .text-gradient {
-    background-image: linear-gradient(115deg, var(--brand-deep), var(--brand));
+    background-image: linear-gradient(115deg, #ffffff 10%, var(--brand) 95%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -174,19 +142,23 @@
   /* Rejilla tecnológica de fondo */
   .bg-grid {
     background-image:
-      linear-gradient(to right, color-mix(in oklab, var(--brand) 16%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklab, var(--brand) 16%, transparent) 1px, transparent 1px);
-    background-size: 46px 46px;
+      linear-gradient(to right, color-mix(in oklab, var(--brand) 11%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--brand) 11%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
-  /* Resplandor azul pastel para tarjetas / botones destacados */
+  /* Resplandor azul pastel */
   .glow {
     box-shadow:
-      0 0 0 1px color-mix(in oklab, var(--brand) 30%, transparent),
-      0 20px 55px -14px color-mix(in oklab, var(--brand) 50%, transparent);
+      0 0 0 1px color-mix(in oklab, var(--brand) 22%, transparent),
+      0 24px 64px -16px color-mix(in oklab, var(--brand) 45%, transparent);
   }
   /* Halo difuso decorativo */
   .blur-orb {
-    filter: blur(72px);
-    opacity: 0.55;
+    filter: blur(80px);
+    opacity: 0.5;
+  }
+  /* Resplandor suave para tarjetas destacadas */
+  .ring-glow {
+    box-shadow: 0 0 50px -10px color-mix(in oklab, var(--brand) 38%, transparent);
   }
 }

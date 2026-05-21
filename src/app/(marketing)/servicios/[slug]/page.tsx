@@ -9,6 +9,7 @@ import { ServiceIcon } from "@/components/shared/service-icon";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Service3D } from "@/components/three/service-3d";
 import { getServiceBySlug, serviceSlugs } from "@/config/services";
 
 /* =====================================================================
@@ -51,6 +52,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
           style={{ backgroundColor: service.accent }}
           aria-hidden
         />
+        <Service3D slug={service.slug} color={service.accent} />
 
         <div className="relative mx-auto max-w-5xl px-5 sm:px-8">
           <Reveal>
