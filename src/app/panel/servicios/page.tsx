@@ -38,7 +38,7 @@ export default function PanelServiciosPage() {
             </p>
             <div className="mt-5 flex gap-2">
               <Button asChild variant="gradient" size="sm" className="flex-1">
-                <Link href="/panel/citas">
+                <Link href={`/panel/citas/agendar?servicio=${service.slug}`}>
                   <CalendarCheck className="size-4" />
                   Agendar
                 </Link>

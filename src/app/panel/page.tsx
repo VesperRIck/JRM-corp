@@ -4,6 +4,7 @@ import { ArrowRight, Briefcase, CalendarCheck, CreditCard, User } from "lucide-r
 import { StatCard } from "@/components/panel/stat-card";
 import { services } from "@/config/services";
 import { getCurrentProfile } from "@/lib/auth/dal";
+import { getMyAppointments } from "@/lib/services/appointments";
 
 /* =====================================================================
    Panel de Cliente · Inicio (dashboard)
@@ -32,6 +33,10 @@ const quickActions = [
 
 export default async function PanelHomePage() {
   const profile = await getCurrentProfile();
+  const appointments = await getMyAppointments();
+  const activeAppointments = appointments.filter(
+    (a) => a.status !== "cancelled",
+  ).length;
   const firstName = (profile?.full_name || "Cliente").split(" ")[0];
 
   return (
@@ -51,7 +56,7 @@ export default async function PanelHomePage() {
         <StatCard
           icon={<CalendarCheck className="size-6" />}
           label="Mis citas"
-          value={0}
+          value={activeAppointments}
         />
         <StatCard
           icon={<CreditCard className="size-6" />}

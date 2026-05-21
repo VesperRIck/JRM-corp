@@ -18,6 +18,28 @@ export interface Profile {
   updated_at: string;
 }
 
+/* ---------- Citas ---------- */
+export type AppointmentStatus =
+  | "pending"
+  | "confirmed"
+  | "completed"
+  | "cancelled";
+
+export interface Appointment {
+  id: string;
+  user_id: string;
+  service_slug: string;
+  service_title: string;
+  /** Fecha en formato YYYY-MM-DD */
+  appointment_date: string;
+  /** Hora en formato HH:MM */
+  appointment_time: string;
+  status: AppointmentStatus;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 /* ---------- Navegación ---------- */
 export interface NavLink {
   label: string;
